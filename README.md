@@ -78,4 +78,267 @@ O projeto está estruturado da seguinte maneira:
 
 
 ## Solução
-O código de testes está pela metade, e você deverá dar continuidade implementando os testes descritos acima, para que no final, tenhamos um programa de testes funcional. Procure pela palavra comentada "TODO" no código, em seguida, implemente conforme as regras acima.
+
+### Arquivo `ValidacoesListTests.cs`
+``` c#
+    // PROBLEMA
+    [Fact]
+    public void NaoDeveConterONumero10NaLista()
+    {
+        //TODO: Implementar método de teste
+
+        // Arrange
+        var lista = new List<int> { 5, -1, -8, 9 };
+        var numeroParaProcurar = 10;
+
+        // Act
+
+        // Assert
+    }
+
+    // SOLUÇÃO
+    [Fact]
+    public void NaoDeveConterONumero10NaLista()
+    {
+        // Arrange
+        var lista = new List<int> { 5, -1, -8, 9 };
+        var numeroParaProcurar = 10;
+
+        // Act
+        var resultado = _validacoes.ListaContemDeterminadoNumero(lista, numeroParaProcurar);
+
+        // Assert
+        Assert.False(resultado);
+    }
+```
+``` c#
+    // PROBLEMA
+    public void DeveMultiplicarOsElementosDaListaPor2()
+    {
+        //TODO: Implementar método de teste
+
+        // Arrange
+        var lista = new List<int> { 5, 7, 8, 9 };
+        var resultadoEsperado = new List<int> { 10, 14, 16, 18 };
+        
+        // Act
+
+        // Assert
+    }
+
+    // SOLUÇÃO
+    [Fact]
+    public void DeveMultiplicarOsElementosDaListaPor2()
+    {
+        // Arrange
+        var lista = new List<int> { 5, 7, 8, 9 };
+        var resultadoEsperado = new List<int> { 10, 14, 16, 18 };
+
+        // Act
+        var res = _validacoes.MultiplicarNumerosLista(lista, 2);
+
+        // Assert
+        Assert.Equal(resultadoEsperado, res);
+    }
+
+```
+``` c#
+    // PROBLEMA
+    [Fact]
+    public void DeveRetornar9ComoMaiorNumeroDaLista()
+    {
+        //TODO: Implementar método de teste
+
+        // Arrange
+        var lista = new List<int> { 5, -1, -8, 9 };
+
+        // Act
+
+        // Assert
+        //TODO: Corrigir o Assert.Equal com base no retorno da chamada ao método
+        Assert.Equal(9, 9);
+    }
+
+    // SOLUÇÃO
+    [Fact]
+    public void DeveRetornar9ComoMaiorNumeroDaLista()
+    {
+        // Arrange
+        var lista = new List<int> { 5, -1, -8, 9 };
+
+        // Act
+        var res = _validacoes.RetornarMaiorNumeroLista(lista);
+
+        // Assert
+        Assert.Equal(9, res);
+    }
+```
+``` c#
+    // RPOBLEMA
+    [Fact]
+    public void DeveRetornarOitoNegativoComoMenorNumeroDaLista()
+    {
+        //TODO: Implementar método de teste
+
+        // Arrange
+        var lista = new List<int> { 5, -1, -8, 9 };
+
+        // Act
+        var resultado = _validacoes.RetornarMenorNumeroLista(lista);
+
+        // Assert
+        //TODO: Corrigir o Assert.Equal com base no retorno da chamada ao método
+        Assert.Equal(-8, -8);
+    }
+
+    //SOLUÇÃO
+    [Fact]
+    public void DeveRetornarOitoNegativoComoMenorNumeroDaLista()
+    {
+        // Arrange
+        var lista = new List<int> { 5, -1, -8, 9 };
+
+        // Act
+        var resultado = _validacoes.RetornarMenorNumeroLista(lista);
+
+        // Assert
+        //TODO: Corrigir o Assert.Equal com base no retorno da chamada ao método
+        Assert.Equal(-8, resultado);
+    }
+```
+
+### Arquivo `ValidacoesStringTests.cs`
+``` c#
+    // PROBLEMA
+    [Fact]
+    public void DeveRetornar6QuantidadeCaracteresDaPalavraMatrix()
+    {
+        //TODO: Corrigir a variável "texto" e "resultadoEsperado" da seção Arrange
+
+        // Arrange
+        var texto = "a";
+        var resultadoEsperado = 0;
+
+        // Act
+        var resultado = _validacoes.RetornarQuantidadeCaracteres(texto);
+
+        // Assert
+        Assert.Equal(resultadoEsperado, resultado);
+    }
+
+    // SOLUÇÂO
+    [Fact]
+    public void DeveRetornar6QuantidadeCaracteresDaPalavraMatrix()
+    {
+        // Arrange
+        var texto = "Matrix";
+        var resultadoEsperado = 6;
+
+        // Act
+        var resultado = _validacoes.RetornarQuantidadeCaracteres(texto);
+
+        // Assert
+        Assert.Equal(resultadoEsperado, resultado);
+    }
+    
+```
+``` c#
+    // PROBLEMA
+    [Fact]
+    public void DeveContemAPalavraQualquerNoTexto()
+    {
+        // Arrange
+        var texto = "Esse é um texto qualquer";
+        var textoProcurado = "qualquer";
+
+        //TODO: Corrigir a chamada do método "ContemCaractere" da seção Act
+        // Act
+        _validacoes.ContemCaractere(texto, textoProcurado);
+
+        // Assert
+        //TODO: Corrigir o Assert.True com base no retorno da chamada ao método
+        Assert.True(true);
+    }
+
+    // SOLUÇÃO
+    [Fact]
+    public void DeveContemAPalavraQualquerNoTexto()
+    {
+        // Arrange
+        var texto = "Esse é um texto qualquer";
+        var textoProcurado = "qualquer";
+
+        // Act
+        var res = _validacoes.ContemCaractere(texto, textoProcurado);
+
+        // Assert
+        Assert.True(res);
+    }
+```
+``` c#
+    //PROBLEMA
+    [Fact]
+    public void NaoDeveConterAPalavraTesteNoTexto()
+    {
+        // Arrange
+        var texto = "Esse é um texto qualquer";
+        var textoProcurado = "teste";
+
+        // Act
+        var resultado = _validacoes.ContemCaractere(texto, textoProcurado);
+
+        // Assert
+        //TODO: Corrigir o Assert.False com base no retorno da chamada ao método
+        Assert.False(true);
+    }
+
+    // SOLUÇÃO
+    [Fact]
+    public void NaoDeveConterAPalavraTesteNoTexto()
+    {
+        // Arrange
+        var texto = "Esse é um texto qualquer";
+        var textoProcurado = "teste";
+
+        // Act
+        var resultado = _validacoes.ContemCaractere(texto, textoProcurado);
+
+        // Assert
+        Assert.False(resultado);
+    }
+
+```
+``` c#
+    //PROBLEMA
+    //TODO: Corrigir a anotação [Fact]
+    public void TextoDeveTerminarComAPalavraProcurado()
+    {
+        //TODO: Corrigir a variável "textoProcurado" seção Arrange
+
+        // Arrange
+        var texto = "Começo, meio e fim do texto procurado";
+        var textoProcurado = "teste";
+
+        // Act
+        var resultado = _validacoes.TextoTerminaCom(texto, textoProcurado);
+
+        // Assert
+        Assert.True(resultado);
+    }
+
+    // SOLUÇÃO    
+    [Fact]
+    public void TextoDeveTerminarComAPalavraProcurado()
+    {
+        // Arrange
+        var texto = "Começo, meio e fim do texto procurado";
+        var textoProcurado = "procurado";
+
+        // Act
+        var resultado = _validacoes.TextoTerminaCom(texto, textoProcurado);
+
+        // Assert
+        Assert.True(resultado);
+    }
+
+```
